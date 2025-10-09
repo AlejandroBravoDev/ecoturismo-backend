@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\municipios;
+use App\Models\Municipios; 
 
-class municipiosController extends Controller
+class MunicipioController extends Controller
 {
     public function index()
     {
-        $municipios = municipios:: all();
+        $municipios = Municipios::select('id', 'nombre')->get();
+        
         return response()->json($municipios);
-
     }
-
 }
