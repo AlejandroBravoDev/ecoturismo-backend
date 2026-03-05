@@ -100,7 +100,7 @@ class AuthController extends Controller
             'nombre_completo' => $request->nombre_completo,
             'email' => strtolower($request->email),
             'password' => $request->password,
-            'rol' => 'usuario',
+            'rol' => 'user',
         ]);
 
         return response()->json([
