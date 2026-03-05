@@ -28,12 +28,10 @@ class LugaresController extends Controller
     try {
         $query = Lugares::with(['municipio', 'opiniones']);
 
-        // Filtro por Municipio
         if ($request->has('municipio_id') && !empty($request->municipio_id)) {
             $query->where('municipio_id', $request->municipio_id);
         }
 
-        // Filtro por Nombre o Descripción
         if ($request->has('search') && !empty($request->search)) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
