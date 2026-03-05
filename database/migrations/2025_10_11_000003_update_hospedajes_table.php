@@ -1,25 +1,16 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        Schema::table('hospedajes', function (Blueprint $table) {
-            // Si la primary key es 'hospedaje_id', renombrarla a 'id'
-            if (Schema::hasColumn('hospedajes', 'hospedaje_id') && !Schema::hasColumn('hospedajes', 'id')) {
-                $table->renameColumn('hospedaje_id', 'id');
-            }
-        });
+        // Already handled in create_hospedajes_table migration
     }
 
-    public function down()
+    public function down(): void
     {
-        Schema::table('hospedajes', function (Blueprint $table) {
-            $table->renameColumn('id', 'hospedaje_id');
-        });
+        // Nothing to revert
     }
 };
