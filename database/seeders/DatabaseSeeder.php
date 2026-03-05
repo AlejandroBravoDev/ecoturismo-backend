@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
             MunicipiosSeeder::class,
             HospedajesSeeder::class,
             LugaresSeeder::class,
-            AdminSeeder::class,
+            adminSeeder::class,
         ]);
     }
 }
