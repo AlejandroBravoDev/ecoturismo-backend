@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comentarios;
-use App\Models\Municipios;
+use App\Models\municipios;
 
 class Hospedaje extends Model
 {
@@ -32,7 +32,7 @@ class Hospedaje extends Model
 
     public function municipio()
     {
-        return $this->belongsTo(Municipios::class, 'municipio_id');
+        return $this->belongsTo(municipios::class, 'municipio_id');
     }
     
      public function opiniones()

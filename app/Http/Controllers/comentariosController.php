@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+// Controlador para comentarios
 class ComentariosController extends Controller
 {
     public function store(Request $request)
