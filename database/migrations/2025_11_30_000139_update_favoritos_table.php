@@ -4,10 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
-    public function up(): void
-    {
-        // Already handled in create_favoritos_table migration
-    }
+    public function up()
+{
+    Schema::table('favoritos', function (Blueprint $table) {
+        $table->string('lugar_id')->nullable()->change();
+    });
+}
 
     public function down(): void
     {
