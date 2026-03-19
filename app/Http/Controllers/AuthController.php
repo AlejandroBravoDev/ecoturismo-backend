@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
-
+ 
 class AuthController extends Controller
 {
     // LOGIN
@@ -68,10 +68,10 @@ class AuthController extends Controller
                 'required',
                 'string',
                 'min:8',
-                'max:12',
+                'max:16',
                 'confirmed',
-                'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/',
-                'not_regex:/^(\d)\1+$/',
+                'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d+×÷=\/_<>\[\]!@#$%^&*()\-\'\":;,?`~\\|{}€£¥₩°•○●□■♤♡◇♧☆▪¤«»¡¿]+$/',
+                'not_regex:/^(.)\1+$/',
                 'not_regex:/123456|234567|345678|456789|012345/',
             ],
         ], [
@@ -81,9 +81,9 @@ class AuthController extends Controller
             'email.unique' => 'Este correo ya está registrado',
             'password.required' => 'La contraseña es obligatoria',
             'password.min' => 'Debe tener mínimo 8 caracteres',
-            'password.max' => 'Máximo 12 caracteres',
+            'password.max' => 'Máximo 16 caracteres',
             'password.confirmed' => 'Las contraseñas no coinciden',
-            'password.regex' => 'La contraseña debe contener letras y números',
+            'password.regex' => 'La contraseña debe contener letras, números y caracteres especiales',
             'password.not_regex' => 'La contraseña no puede ser secuencial ni repetitiva',
         ]);
 
