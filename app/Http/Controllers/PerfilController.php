@@ -52,6 +52,7 @@ class PerfilController extends Controller
             });
 
             $favoritosFormateados = $usuario->favoritos->map(function ($favorito) {
+                $image_url = $favorito->image_path ? Storage::disk('s3')->url($favorito->image_path) : null;
                 return [
                     'id' => $favorito->id,
                     'created_at' => optional($favorito->created_at)->diffForHumans(),
@@ -60,16 +61,20 @@ class PerfilController extends Controller
                         'id' => $favorito->lugar->id,
                         'nombre' => $favorito->lugar->nombre,
                         'descripcion' => $favorito->lugar->descripcion,
-                        'direccion' => $favorito->lugar->direccion,
-                        'imagen_url' => $favorito->lugar->imagen_url ?? null,
+                        'ubicacion' => $favorito->lugar->ubicacion,
+                        'imagen_url' => is_array($favorito->lugar->imagenes) 
+                            ? ($favorito->lugar->imagenes[0] ?? null)
+                            : (json_decode(trim($favorito->lugar->imagenes), true)[0] ?? null),
                     ] : null,
 
                     'hospedaje' => $favorito->hospedaje ? [
                         'id' => $favorito->hospedaje->id,
                         'nombre' => $favorito->hospedaje->nombre,
                         'descripcion' => $favorito->hospedaje->descripcion,
-                        'direccion' => $favorito->hospedaje->direccion,
-                        'imagen_url' => $favorito->hospedaje->imagen_url ?? null,
+                        'ubicacion' => $favorito->hospedaje->ubicacion,
+                        'imagen_url' => is_array($favorito->hospedaje->imagenes) 
+                            ? ($favorito->hospedaje->imagenes[0] ?? null)
+                            : (json_decode(trim($favorito->hospedaje->imagenes), true)[0] ?? null),
                     ] : null,
                 ];
             });

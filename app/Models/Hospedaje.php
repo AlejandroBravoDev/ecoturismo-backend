@@ -9,7 +9,7 @@ use App\Models\municipios;
 class Hospedaje extends Model
 {
     protected $table = 'hospedajes';
-    protected $primaryKey = 'id'; // ✅ CORREGIDO: usar 'id' en lugar de 'hospedaje_id'
+    protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int';
     
